@@ -33,7 +33,7 @@ let todoCompleteBtn = todo.querySelectorAll('.todo-complete');
 todoCompleteBtn.forEach(function(item){
     item.addEventListener('click', function(){
         let innerVal = this.parentElement.parentElement.textContent.trim();
-        localStorage.setItem('сompleted-' + innerVal, innerVal);
+        localStorage.setItem('completed-' + innerVal, innerVal);
         localStorage.removeItem('todo-' + innerVal, innerVal);
         console.log(this.parentElement.parentElement.textContent);
         todoCompleted.appendChild(this.parentElement.parentElement);
