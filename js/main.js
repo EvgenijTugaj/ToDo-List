@@ -4,9 +4,7 @@ let innerTodo = document.querySelector('.header-input'),
     newTodoBtn = document.querySelector('#add'),
     todo = document.querySelector('#todo'),
     todoCompleted = document.querySelector('#completed'),
-    todoButtons = document.querySelectorAll('.todo-buttons')[0].cloneNode(true),
     newTodoItem = todo.querySelectorAll('.todo-item')[0];
-    console.log('newTodoItem: ', newTodoItem);
 let resetAll = function(){
     let todo = document.querySelector('#todo');
     while (todo.firstChild) {
@@ -21,19 +19,14 @@ let resetAll = function(){
 resetAll();
 
 let addAllTodo = function(){
-for(let i = 0; i < localStorage.length; i++) {
-    let newItem = newTodoItem.cloneNode(true); 
-    console.log('newItem: ', newItem);
-    // newItem.classList.add('todo-item');   
-    // console.log('newItem: ', newItem);
-    let key = localStorage.key(i);
-    // newItem.textContent = localStorage.getItem(key);
-    if(localStorage.key(i).substring(0, 4) === 'todo'){
-        todo.append(newItem);
-    }else{
-        todoCompleted.append(newItem);
-    }  
-    // newItem.append(todoButtons);
+    for(let i = 0; i < localStorage.length; i++) {
+        newTodoItem.innerHTML = localStorage.getItem(localStorage.key(i))+'<div class="todo-buttons"><button class="todo-remove"></button><button class="todo-complete"></button></div>';
+        let newItem = newTodoItem.cloneNode(true);
+        if(localStorage.key(i).substring(0, 4) === 'todo'){
+            todo.append(newItem);
+        }else{
+            todoCompleted.append(newItem);
+        }  
     }
 };
 addAllTodo();
