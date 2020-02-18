@@ -61,7 +61,7 @@ let todoRemoveBtn = document.querySelectorAll('.todo-remove');
 todoRemoveBtn.forEach(function(item){
     item.addEventListener('click', function(){
         localStorage.removeItem(this.parentElement.parentElement.parentElement.id + '-' + this.parentElement.parentElement.textContent, this.parentElement.parentElement.textContent.trim());
-        console.log(this.parentElement.parentElement.parentElement.id + '-' + this.parentElement.parentElement.textContent,  this.parentElement.parentElement.textContent.trim());
+        console.log(this.parentElement.parentElement.parentElement.id + '-' + this.parentElement.parentElement.textContent, this.parentElement.parentElement.textContent.trim());
         this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement);
     });
 });
