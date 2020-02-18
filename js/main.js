@@ -5,31 +5,24 @@ let innerTodo = document.querySelector('.header-input'),
     todo = document.querySelector('#todo'),
     todoCompleted = document.querySelector('#completed'),
     newTodoItem = todo.querySelectorAll('.todo-item')[0];
-let resetAll = function(){
-    let todo = document.querySelector('#todo');
-    while (todo.firstChild) {
-        todo.removeChild(todo.lastChild);
-  }
-    let todoCompleted = document.querySelector('#completed');
-    while (todoCompleted.firstChild) {
-        todoCompleted.removeChild(todoCompleted.lastChild);
-  }
-};
 
-resetAll();
+while (todo.firstChild) {
+    todo.removeChild(todo.lastChild);
+}
+while (todoCompleted.firstChild) {
+    todoCompleted.removeChild(todoCompleted.lastChild);
+}
 
-let addAllTodo = function(){
-    for(let i = 0; i < localStorage.length; i++) {
-        newTodoItem.innerHTML = localStorage.getItem(localStorage.key(i))+'<div class="todo-buttons"><button class="todo-remove"></button><button class="todo-complete"></button></div>';
-        let newItem = newTodoItem.cloneNode(true);
-        if(localStorage.key(i).substring(0, 4) === 'todo'){
-            todo.append(newItem);
-        }else{
-            todoCompleted.append(newItem);
-        }  
-    }
-};
-addAllTodo();
+for(let i = 0; i < localStorage.length; i++) {
+    newTodoItem.innerHTML = localStorage.getItem(localStorage.key(i))+'<div class="todo-buttons"><button class="todo-remove"></button><button class="todo-complete"></button></div>';
+    let newItem = newTodoItem.cloneNode(true);
+    if(localStorage.key(i).substring(0, 4) === 'todo'){
+        todo.append(newItem);
+    }else{
+        todoCompleted.append(newItem);
+    }  
+}
+
 newTodoBtn.addEventListener('click', function(){
     if(innerTodo.value !== ''){
         localStorage.setItem('todo-' + innerTodo.value, innerTodo.value);
@@ -40,7 +33,7 @@ let todoCompleteBtn = todo.querySelectorAll('.todo-complete');
 todoCompleteBtn.forEach(function(item){
     item.addEventListener('click', function(){
         let innerVal = this.parentElement.parentElement.textContent.trim();
-        localStorage.setItem('сomplete-' + innerVal, innerVal);
+        localStorage.setItem('сompleted-' + innerVal, innerVal);
         localStorage.removeItem('todo-' + innerVal, innerVal);
         console.log(this.parentElement.parentElement.textContent);
         todoCompleted.appendChild(this.parentElement.parentElement);
