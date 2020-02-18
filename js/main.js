@@ -7,7 +7,6 @@ let innerTodo = document.querySelector('.header-input'),
     todoButtons = document.querySelectorAll('.todo-buttons')[0].cloneNode(true),
     newTodoItem = todo.querySelectorAll('.todo-item')[0].cloneNode(true);
     console.log('newTodoItem: ', newTodoItem);
-    // console.log('todoButtons: ', todoButtons);
 let resetAll = function(){
     let todo = document.querySelector('#todo');
     while (todo.firstChild) {
@@ -19,7 +18,7 @@ let resetAll = function(){
   }
 };
 
-// resetAll();
+resetAll();
 
 let addAllTodo = function(){
 for(let i = 0; i < localStorage.length; i++) {
@@ -34,7 +33,6 @@ for(let i = 0; i < localStorage.length; i++) {
     }else{
         todoCompleted.append(newItem);
     }  
-    // todo.append(newItem);
     newItem.append(todoButtons);
     }
 };
@@ -42,8 +40,7 @@ addAllTodo();
 newTodoBtn.addEventListener('click', function(){
     if(innerTodo.value !== ''){
         localStorage.setItem('todo-' + innerTodo.value, innerTodo.value);
-    }
-    
+    }   
 });
 
 let todoCompleteBtn = todo.querySelectorAll('.todo-complete');
@@ -65,7 +62,3 @@ todoRemoveBtn.forEach(function(item){
         this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement);
     });
 });
-
-if(localStorage.length === 0){
-    console.log('ПУСТО');
-}
